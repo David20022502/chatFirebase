@@ -14,7 +14,9 @@ import { FireChatService } from '../services/fire-chat.service';
 export class HomePage  {
   
   Chat: Chat[];
+  ChatOwber: Chat[];
   public chatForm: FormGroup;
+  username:any;
 
   constructor(private chatService: FireChatService, public formBuilder: FormBuilder) {
     this.chatForm= this.formBuilder.group({
@@ -32,10 +34,14 @@ export class HomePage  {
           ...(e.payload.doc.data() as Chat)
         };
       });
+      
     });
+
   }
 
   onSubmit(){
+    console.log(this.chatForm.value);
+    this.username=this.chatForm.value.user;
     this.chatService.messageCreate(this.chatForm.value);
   }
 

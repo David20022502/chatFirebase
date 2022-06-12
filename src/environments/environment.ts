@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyCSYu3KbAkn06LL_cxZsJQr1srvHcXKsHQ",
-    authDomain: "appweb-bcd38.firebaseapp.com",
-    databaseURL: "https://appweb-bcd38-default-rtdb.firebaseio.com",
-    projectId: "appweb-bcd38",
-    storageBucket: "appweb-bcd38.appspot.com",
-    messagingSenderId: "267983699764",
-    appId: "1:267983699764:web:e22137e9eb92611a086f61"
+  firebaseConfig: {
+    apiKey: "AIzaSyCBotJe63wGWQMit5anfQ9vOjP-QlLOSvA",
+    authDomain: "moviles2022a.firebaseapp.com",
+    databaseURL: "https://moviles2022a-default-rtdb.firebaseio.com",
+    projectId: "moviles2022a",
+    storageBucket: "moviles2022a.appspot.com",
+    messagingSenderId: "470170577616",
+    appId: "1:470170577616:web:06946ddd70cade6f460cd5",
+    measurementId: "G-JWEHHXNF0Z"
   },
 };
 

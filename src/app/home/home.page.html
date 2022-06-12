@@ -13,35 +13,63 @@
     </ion-toolbar>
   </ion-header>
 
-  
+
 
   <div id="container">
     <hr>
-  <h2>Hi5 Chat</h2>
-  <hr>
-  <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="mb-3">
+    <h2>Chat grupal</h2>
+    <hr>
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="mb-3">
         <label class="form-label">Usuario</label>
         <input formControlName="user" type="text" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">mensaje</label>
-        <input formControlName="sms" type="text" class="form-control" required>
-    </div>
-        
-    <button [disabled]="!chatForm.valid" type="submit" (click)="mensajesShow()" class="btn btn-primary button" >Save</button>
+      </div>
+      <div *ngFor="let chat of Chat?.reverse()">
+        <div *ngIf="username===chat.user; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <ion-card style="background-color: #005c4b; display: flex;align-content: flex-end;">
+            <div style="display: flex;align-items:flex-end; width: 100%; flex-direction: column;">
+              <ion-card-header>
+                <ion-card-title>{{chat.user}}</ion-card-title>
+              </ion-card-header>
 
-    <ion-card *ngFor="let chat of Chat">
-      <ion-card-header>
-        <ion-card-title>{{chat.user}}</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        {{chat.sms}}
-      </ion-card-content>
-    </ion-card>
-        
-    
-</form>
+              <ion-card-content>
+                {{chat.sms}}
+              </ion-card-content>
+            </div>
+
+          </ion-card>
+        </ng-template>
+        <ng-template #elseBlock>
+          <ion-card style="display: flex;align-content: flex-end;">
+            <div style="display: flex;align-items:flex-start; width: 100%; flex-direction: column;">
+              <ion-card-header>
+                <ion-card-title>{{chat.user}}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                {{chat.sms}}
+              </ion-card-content>
+            </div>
+
+          </ion-card>
+        </ng-template>
+
+
+      </div>
+
+      <div style="display: flex ;flex-direction: row; justify-content: center;">
+        <div class="mb-3">
+          <label class="form-label">mensaje</label>
+          <input formControlName="sms" type="text" class="form-control" required>
+        </div>
+
+        <button [disabled]="!chatForm.valid" type="submit" (click)="mensajesShow()"
+          class="btn btn-primary button">Enviar</button>
+
+
+      </div>
+
+    </form>
   </div>
 </ion-content>
